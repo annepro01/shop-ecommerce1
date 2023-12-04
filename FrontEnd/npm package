@@ -1,0 +1,20 @@
+<!-- install redux with existing app
+npm i react-redux - binding the redux toolkit
+npm i axios for http request -->
+
+
+axios({
+  url: 'https://login.uber.com/oauth/v2/token',
+  headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+  data: `client_id=${encodeURIComponent('**')}&client_secret=${encodeURIComponent('**')
+}&grant_type=authorization_code&redirect_uri=${encodeURIComponent('http://localhost:8080/')}
+&code=${encodeURIComponent('**')}`
+})
+
+Before I'll proceed I have some questions..
+
+1. in the first row which is CAB FLOOR AREA (79 x 52.25 / 144 ) this 144 is this a standard/constant value? 
+
+2.and for the TOTAL CAB VOLUME ( 79 x 52.25 x 108/ 1728 ) this 108 / 1728 is the standard/constant value?
+
+3. When I also do the computation in the CAR FLOOR AREA the result was 28.66 so I should round off?? same as for the TOTAL CAB VOLUME the result was 257.98..
