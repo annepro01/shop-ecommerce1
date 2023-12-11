@@ -13,6 +13,10 @@ import colorRoutes from "../routes/colorRoute.js";
 import reviewRoutes from "../routes/reviewRoute.js";
 import orderRoutes from "../routes/orderRoute.js";
 import couponRoutes from "../routes/couponRoute.js";
+import path from "path";
+
+const dirname = path.dirname("");
+const buildPath = path.join(dirname, "../client/build");
 
 //dBConnect
 dbConnect();
@@ -37,5 +41,18 @@ app.use("/api/v1/coupons/", couponRoutes);
 //error middleware
 app.use(notFound);
 app.use(globalErrHandler);
+
+app.use(express.static(buildPath));
+
+app.get("/*", function (req, res) {
+  res.sendFile(
+    path.join(dirname, "../FrontEnd/build/index.html"),
+    function (err) {
+      if (err) {
+        res.status(500).send(err);
+      }
+    }
+  );
+});
 
 export default app;

@@ -1,0 +1,33 @@
+version: "4"
+
+services:
+  #mongoDB services
+  mongo_db:
+    container_name: db_container
+    image: mongo:latest
+    volumes:
+      - mongo_db:/data/db
+
+  #Node Api Services
+  api:
+    build: .
+    environment:
+      Mongo_URL: mongodb+srv://marystoneworks:aVNTSHF0f94JWlq0@nodejs-ecommerce-api.vsnryfe.mongodb.net/nodejs-ecommerce-api?retryWrites=true&w=majority
+      STRIPE_S_KEY: sk_test_51Nnb5FGQkiYWS6aH1Fcx4wxrZYVmNlJqnYwR2StG8f8sEdPXHsgQ3nql15npgYFIXGYTlStixm8K2aqR6LngZfOR001mAu126p
+      CLOUDINARY_NAME: demxl6nhe
+      CLOUDINARY_APIKEY: 123132844673681
+      CLOUDINARY_APISECRETKEY: x1F9jOcOFXXpzsNWauNu-0-Cilc
+
+    depends_on:
+      - mongo_db
+
+    #Node Api Services
+  frontend:
+    build: ./FrontEnd
+    stdin_open: true
+    tty: true
+    depends_on:
+      - api
+
+volumes:
+  mongo_db: {}
