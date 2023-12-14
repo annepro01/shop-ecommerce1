@@ -1,0 +1,1 @@
+back to ubuntu - cd -/home/ubuntu
