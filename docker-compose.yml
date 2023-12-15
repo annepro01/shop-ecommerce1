@@ -5,6 +5,10 @@ services:
     image: mongo:latest
     volumes:
       - mongo_db:/data/db
+    networks:
+      - app-network
+    ports:
+      - "27017:27017"
 
   #Node Api Services
   api:
@@ -16,20 +20,28 @@ services:
       CLOUDINARY_APIKEY: 123132844673681
       CLOUDINARY_APISECRETKEY: x1F9jOcOFXXpzsNWauNu-0-Cilc
 
-    ports:
-      - "2030:2030"
     depends_on:
       - mongo_db
+    networks:
+      - app-network
+    ports:
+      - "2030:2030"
 
     #Node Api Services
   frontend:
     build: ./FrontEnd
     stdin_open: true
     tty: true
-    ports:
-      - "3000:3000"
     depends_on:
       - api
+    networks:
+      - app-network
+    ports:
+      - "3000:3000"
 
 volumes:
   mongo_db: {}
+
+networks:
+  app-network:
+    driver: bridge

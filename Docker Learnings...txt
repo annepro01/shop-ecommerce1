@@ -1,0 +1,27 @@
+Docker Learnings..
+
+docker images - to view docker images
+docker ps -a - to preview the old container
+docker ps - to view current docker container
+docker run -t -p6000:6000 name of container
+docker-compose up -d - to all docker images or run the docker-compose.yml
+docker build - to create a docker container
+docker rmi - remove the docker images if you put -f it will delete forcely
+docker rm - remove the container
+docker pull - to pull docker images from aws/ ECR / git 
+docker stop - to stop the running app
+docker restart
+docker exec -ti -getting insdie the docker images 
+
+CMD commands
+cat - to view the file
+nano - to edit inside the file
+mkdir - make a folder
+ls -l - to view all the files inside the folder
+
+
+ec2 commands
+sudo apt get install
+sudo su - (getting inside the root directory)
+rm - 
+
